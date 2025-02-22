@@ -23,14 +23,15 @@ This extension aims to minimize latency while maintaining accuracy, ensuring a s
 ## Resources
 - [Chrome AI Extensions](https://developer.chrome.com/docs/extensions/ai)
 - [Creating a Powerful AI-Powered Chrome Extension: A Step-by-Step Guide](https://medium.com/@intuitionlabs/creating-a-powerful-ai-powered-chrome-extension-a-step-by-step-guide-b0a200955469)
+- [Jasper Chrome Extension](https://www.jasper.ai/chrome-extension)
 ## Installation
 1. **Clone the repository:**
 ```sh
 git clone https://github.com/Ranxin2023/AI_Chrome_Extension_Ranxin.git
 ```
-2. Open Google Chrome and navigate to Chrome Extensions:
+2. **Open Google Chrome and navigate to Chrome Extensions**:
     - Enter `chrome://extensions/` in the address bar.
-3. Enable Developer mode (toggle at the top right).
+3. **Enable Developer mode (toggle at the top right)**.
     - Toggle the **Developer mode** switch on the top right corner.
 4. **Load the Unpacked Extension:**:
     - Click on **Load unpacked**.
