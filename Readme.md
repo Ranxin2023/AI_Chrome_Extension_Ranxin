@@ -70,7 +70,22 @@ git clone https://github.com/Ranxin2023/AI_Chrome_Extension_Ranxin.git
     - Use the up and down arrow keys to navigate suggestions.
 
     - Press Enter to select a suggestion.
+## Project structure
+```sh
+PROJECT9/
+│── src/
+│   │── background.js          # Background script handling API calls
+│   │── content.js             # Injected script handling text completion
+│   │── popup.js               # JavaScript logic for popup UI
+│── assets/
+│   │── styles.css             # Styling for suggestions and UI
+│── manifest.json              # Chrome extension metadata
+│── popup.html                 # UI for extension popup
+│── .gitignore                 # Ignore unnecessary files
+│── README.md                  # Project documentation
+│── Presentation.pptx           # (Optional) Project presentation
 
+```
 ## Future Improvements
 - Optimize latency in AI responses.
 
