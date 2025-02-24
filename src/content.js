@@ -10,6 +10,7 @@ document.addEventListener("input", (event) => {
             return;
           }
           console.log("✅ AI Suggestions:", response?.completions || "No suggestions received.");
+          showAutocomplete(target, response.completions);
         }
       );
   // }
