@@ -1,3 +1,4 @@
 *.pptx
 .env
 config.js
+*.srt
