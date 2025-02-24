@@ -4,18 +4,22 @@
     "version": "1.0",
     "description": "Enables AI-powered autocomplete for text fields on any website.",
     "permissions": ["activeTab", "storage"],
-    "host_permissions": ["<all_urls>"],
+    "host_permissions": ["https://mail.google.com/*"],
     "background": {
-      "service_worker": "background.js"
+      "service_worker": "src/background.js",
+      "type": "module"
     },
     "content_scripts": [
       {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"],
-        "css": ["styles.css"]
+        "matches": ["https://mail.google.com/*"],
+        "all_frames": true,
+        "run_at": "document_idle",
+        "js": ["src/content.js"],
+        "css": ["assets/styles.css"]
       }
     ],
     "action": {
-      "default_popup": "popup.html"
-    }
+    "default_popup": "popup.html"
+    
+  }
   }

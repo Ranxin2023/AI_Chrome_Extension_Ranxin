@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>AI Autocomplete</title>
-  <script src="popup.js"></script>
+  <script src="./src/popup.js"></script>
 </head>
 <body>
   <h1>AI Autocomplete</h1>
@@ -10,12 +10,3 @@
 </body>
 </html>
 
-// popup.js
-document.getElementById("toggle").addEventListener("click", () => {
-  chrome.storage.sync.get("enabled", (data) => {
-    const newState = !data.enabled;
-    chrome.storage.sync.set({ enabled: newState }, () => {
-      document.getElementById("toggle").textContent = newState ? "Disable" : "Enable";
-    });
-  });
-});

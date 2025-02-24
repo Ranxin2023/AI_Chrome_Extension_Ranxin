@@ -36,6 +36,10 @@ git clone https://github.com/Ranxin2023/AI_Chrome_Extension_Ranxin.git
 4. **Load the Unpacked Extension:**:
     - Click on **Load unpacked**.
     - Select the cloned project directory.
+5. Configure API Key:
+    - Obtain your OpenAI API key from OpenAI.
+    - In the project directory, create a `config.js` file:
+    - Important: Ensure `config.js` is listed in .gitignore to prevent exposing your API key.
 ## Features
 - Inline AI Text Completions:
     - Provides real-time AI-powered suggestions while the user is typing.
