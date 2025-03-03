@@ -28,21 +28,43 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             "Authorization": `Bearer ${apiKey}`
           },
           body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: request.text }],
+            model: "gpt-4o",
+            messages: [
+              { role: "system", content: "You are an autocomplete assistant. Complete the given sentence with multiple possible endings." },
+              { role: "user", content: `Complete this sentence with multiple possible endings: "${request.text}"` }
+            ],
+            temperature: 0.7,
+            max_tokens: 50,
+            n: 5,  // Request multiple completions
           })
         });
 
         const responseData = await response.json();
         console.log("API Response:", responseData);
 
+        // if (!responseData.choices || !Array.isArray(responseData.choices)) {
+        //   console.error("Error: `choices` array is missing in API response.", responseData);
+        //   sendResponse({ error: "Invalid API response: `choices` missing." });
+        // } else {
+        //   sendResponse({ completions: responseData.choices[0].message.content });
+        // }
         if (!responseData.choices || !Array.isArray(responseData.choices)) {
           console.error("Error: `choices` array is missing in API response.", responseData);
           sendResponse({ error: "Invalid API response: `choices` missing." });
         } else {
-          sendResponse({ completions: responseData.choices[0].message.content });
-        }
+          // Extract the response text
+          const rawText = responseData.choices[0].message.content.trim();
 
+          // Split suggestions based on numbering (1., 2., etc.) or dash lists (- )
+          let completionsList = rawText
+            .split(/\s*-\s*|\s*\d+\.\s*/) // 🔴 Split on numbered or dash-based lists
+            .map(text => text.trim().replace(/^"(.*)"$/, "$1")) // 🔴 Remove unnecessary quotes
+            .filter(text => text.length > 0) // 🔴 Remove empty entries
+            .map((text, index) => ({ id: index, text })); // Convert to structured array format
+
+          sendResponse({ completions: completionsList });
+
+        }
       } catch (error) {
         console.error("Error fetching completions:", error);
         sendResponse({ error: "Failed to fetch completions." });
