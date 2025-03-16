@@ -2,3 +2,5 @@
 .env
 config.js
 *.srt
+*.mhtml
+instructions.png
